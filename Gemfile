@@ -48,4 +48,3 @@ end
 gem 'pry-rails'
 gem 'carrierwave'
 gem 'fog'
-gem 'config'
