@@ -4,7 +4,13 @@ class Api::BlogsController < ApplicationController
   before_action :set_blog, only: [:show]
 
   def index
-    @blogs = Blog.all
+    if params[:user_id] == "nil"
+      @blogs = Blog.all
+    else
+      user = User.find(params[:user_id])
+      @blogs = user.blogs
+    end
+
   end
 
   def show

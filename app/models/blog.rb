@@ -1,4 +1,5 @@
 class Blog < ActiveRecord::Base
+  belongs_to :user
   has_many :materials
   has_many :images, ->{ order("order DESC") }
   mount_uploader :image, ImageUploader
@@ -6,11 +7,12 @@ class Blog < ActiveRecord::Base
   def self.save_blog(params)
     title = params[:title]
     sentence = params[:sentence]
+    user_id = params[:user_id]
 
     text_hashes = to_text_hashes(params)
     image_hashes = to_image_hashes(params)
 
-    blog = Blog.create(title: title, sentence: sentence, image: image_hashes.first[:image])
+    blog = Blog.create(title: title, sentence: sentence, image: image_hashes.first[:image], user_id: user_id)
 
     blog.save_images(image_hashes)
     blog.save_texts(text_hashes)

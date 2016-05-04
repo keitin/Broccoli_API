@@ -3,6 +3,7 @@ class Api::UsersController < ApplicationController
   def create
     user = User.where(facebook_id: user_params[:facebook_id]).first_or_initialize
     user = user.update(user_params)
+    @user = User.find_by(facebook_id: user_params[:facebook_id])
   end
 
   private
