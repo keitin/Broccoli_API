@@ -11,7 +11,7 @@ class Api::BlogsController < ApplicationController
   end
 
   def create
-    @blog = Blog.create(blog_params)
+    @blog = Blog.save_blog(params)
   end
 
   private
