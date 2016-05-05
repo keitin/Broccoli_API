@@ -18,6 +18,7 @@ class Api::BlogsController < ApplicationController
 
   def create
     @blog = Blog.save_blog(params)
+    @user = @blog.user
   end
 
   private
