@@ -45,10 +45,12 @@ group :development do
   gem 'spring'
 end
 
+group :producdon, :staging do
+  gem 'unicorn'
+end
+
 gem 'pry-rails'
 gem 'carrierwave'
 gem 'fog'
 gem 'kaminari'
 gem 'acts_in_relation'
-
-

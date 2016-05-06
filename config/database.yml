@@ -50,5 +50,5 @@ test:
 production:
   <<: *default
   database: SimpleBlogAPI_production
-  username: SimpleBlogAPI
-  password: <%= ENV['SIMPLEBLOGAPI_DATABASE_PASSWORD'] %>
+  username: root
+  password: 
