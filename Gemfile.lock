@@ -37,11 +37,16 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
+    acts_in_relation (0.2.2)
+      caller_class
+      rails
+      verbs
     arel (6.0.3)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
     builder (3.2.2)
     byebug (8.2.5)
+    caller_class (0.0.1)
     carrierwave (0.10.0)
       activemodel (>= 3.2.0)
       activesupport (>= 3.2.0)
@@ -271,6 +276,9 @@ GEM
       thread_safe (~> 0.1)
     uglifier (3.0.0)
       execjs (>= 0.3.0, < 3)
+    verbs (2.1.4)
+      activesupport (>= 2.3.4)
+      i18n
     web-console (2.3.0)
       activemodel (>= 4.0)
       binding_of_caller (>= 0.7.2)
@@ -282,6 +290,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  acts_in_relation
   byebug
   carrierwave
   coffee-rails (~> 4.1.0)

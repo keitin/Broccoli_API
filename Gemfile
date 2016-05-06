@@ -49,3 +49,6 @@ gem 'pry-rails'
 gem 'carrierwave'
 gem 'fog'
 gem 'kaminari'
+gem 'acts_in_relation'
+
+
