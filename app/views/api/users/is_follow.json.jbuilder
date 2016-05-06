@@ -1,0 +1,1 @@
+json.is_follow @is_follow
