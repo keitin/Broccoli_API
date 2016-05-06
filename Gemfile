@@ -52,3 +52,4 @@ gem 'fog'
 group :producdon, :staging do
   gem 'unicorn' 
 end
+gem 'kaminari'
