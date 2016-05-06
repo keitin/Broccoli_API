@@ -48,3 +48,7 @@ end
 gem 'pry-rails'
 gem 'carrierwave'
 gem 'fog'
+
+group :producdon, :staging do
+  gem 'unicorn' 
+end
