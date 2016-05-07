@@ -24,6 +24,11 @@ class Api::UsersController < ApplicationController
     @follows = user.following
   end
 
+  def followers
+    user = User.find(follow_params[:id])
+    @followers = user.followers
+  end
+
   def is_follow
     user = User.find(follow_params[:id])
     target_user = User.find(follow_params[:target_user_id])
