@@ -12,7 +12,12 @@ Rails.application.routes.draw do
         get    'is_follow'
       end
     end
-    resources :blogs, only: [:index, :create, :show]
+    resources :blogs, only: [:index, :create, :show] do
+      collection do
+        get 'following'
+        get 'search'
+      end
+    end
     resources :images, only: [:create]
     resources :texts, only: [:create]
   end

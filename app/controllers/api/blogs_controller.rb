@@ -10,7 +10,6 @@ class Api::BlogsController < ApplicationController
       user = User.find(params[:user_id])
       @blogs = user.blogs.order("created_at DESC").page(params[:page]).per(3)
     end
-
   end
 
   def show
@@ -21,9 +20,22 @@ class Api::BlogsController < ApplicationController
     @user = @blog.user
   end
 
+  def following
+    user = User.find(params[:id])
+    @blogs = Blog.where(user_id: user.following).order("created_at DESC").page(params[:page]).per(3)
+  end
+
+  def search
+    @blogs = Blog.where("title like '%#{search_params[:keyword]}%'").page(search_params[:page]).per(3)
+  end
+
   private
   def image_params
     params.permit(:image)
+  end
+
+  def search_params
+    params.permit(:keyword, :page)
   end
 
   def set_blog
