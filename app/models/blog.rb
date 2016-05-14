@@ -1,5 +1,6 @@
 class Blog < ActiveRecord::Base
   belongs_to :user
+  has_many :likes, dependent: :destroy
   has_many :materials
   has_many :images, ->{ order("order DESC") }
   mount_uploader :image, ImageUploader

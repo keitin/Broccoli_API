@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   namespace :api, default: {format: :json} do
     resources :users, only: [:create] do
       member do
+        resources :notices, only: [:index]
         post   'follow'
         delete 'unfollow'
         get    'following'
@@ -16,6 +17,11 @@ Rails.application.routes.draw do
       collection do
         get 'following'
         get 'search'
+      end
+      resources :likes, only: [:create, :destroy] do
+        collection do
+          get   'is_like'
+        end
       end
     end
     resources :images, only: [:create]

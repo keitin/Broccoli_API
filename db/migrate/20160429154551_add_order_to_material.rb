@@ -4,9 +4,3 @@ class AddOrderToMaterial < ActiveRecord::Migration
   end
 end
 
-
-
-# 画像をorderを付けてAPIに送る
-# carrior_waveからのS３にアップしURLをimagesに入れる
-# テキストもorderと一緒にAPIに送る
-

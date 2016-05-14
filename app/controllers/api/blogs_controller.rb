@@ -22,7 +22,7 @@ class Api::BlogsController < ApplicationController
 
   def following
     user = User.find(params[:id])
-    @blogs = Blog.where(user_id: user.following).order("created_at DESC").page(params[:page]).per(3)
+    @blogs = Blog.where(user_id: [user.following, user].flatten).order("created_at DESC").page(params[:page]).per(3)
   end
 
   def search
