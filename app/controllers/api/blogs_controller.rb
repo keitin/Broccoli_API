@@ -5,7 +5,7 @@ class Api::BlogsController < ApplicationController
 
   def index
     if params[:user_id] == "nil"
-      @blogs = Blog.order("created_at DESC").page(params[:page]).per(3)
+      @blogs = Blog.all
     else
       user = User.find(params[:user_id])
       @blogs = user.blogs.order("created_at DESC").page(params[:page]).per(3)
