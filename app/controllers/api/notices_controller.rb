@@ -1,7 +1,7 @@
 class Api::NoticesController < ApplicationController
   def index
     user = User.find(user_params[:id])
-    @notices = user.notices
+    @notices = user.notices.order("created_at DESC").page(params[:page]).per(20)
   end
 
   private

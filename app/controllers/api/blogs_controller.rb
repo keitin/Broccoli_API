@@ -5,10 +5,10 @@ class Api::BlogsController < ApplicationController
 
   def index
     if params[:user_id] == "nil"
-      @blogs = Blog.all
+      @blogs = Blog.order("created_at DESC").page(params[:page]).per(20)
     else
       user = User.find(params[:user_id])
-      @blogs = user.blogs.order("created_at DESC").page(params[:page]).per(3)
+      @blogs = user.blogs.order("created_at DESC").page(params[:page]).per(20)
     end
   end
 
@@ -22,11 +22,11 @@ class Api::BlogsController < ApplicationController
 
   def following
     user = User.find(params[:id])
-    @blogs = Blog.where(user_id: [user.following, user].flatten).order("created_at DESC").page(params[:page]).per(3)
+    @blogs = Blog.where(user_id: [user.following, user].flatten).order("created_at DESC").page(params[:page]).per(20)
   end
 
   def search
-    @blogs = Blog.where("title like '%#{search_params[:keyword]}%'").page(search_params[:page]).per(3)
+    @blogs = Blog.where("title like '%#{search_params[:keyword]}%'").page(search_params[:page]).per(20)
   end
 
   private
