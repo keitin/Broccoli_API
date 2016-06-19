@@ -24,7 +24,9 @@ Rails.application.routes.draw do
         end
       end
     end
+    resources :reports, only: [:create]
     resources :images, only: [:create]
     resources :texts, only: [:create]
+
   end
 end
