@@ -11,6 +11,11 @@ Rails.application.routes.draw do
         get    'following'
         get    'followers'
         get    'is_follow'
+        resources :blocks, only: [:create, :destroy] do
+          collection do
+            get   'is_blocked'
+        end
+        end
       end
     end
     resources :blogs, only: [:index, :create, :show] do
