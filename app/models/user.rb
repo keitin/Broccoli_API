@@ -1,6 +1,15 @@
 class User < ActiveRecord::Base
+  authenticates_with_sorcery!
+  attr_accessor :password
+  attr_accessor :password_confirmation
+
+  mount_uploader :avatar, ImageUploader
+
   has_many :blogs
   has_many :notices, class_name: 'Like', foreign_key: 'blog_user_id'
+  validates :email, uniqueness: true
+
+
   include Resonatable
 
   def following_without_blocking

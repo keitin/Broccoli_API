@@ -2,9 +2,14 @@ class Api::UsersController < ApplicationController
   skip_before_filter :verify_authenticity_token
 
   def create
-    user = User.where(facebook_id: user_params[:facebook_id]).first_or_initialize
-    user = user.update(user_params)
-    @user = User.find_by(facebook_id: user_params[:facebook_id])
+    if user_params[:facebook_id]
+      user = User.where(facebook_id: user_params[:facebook_id]).first_or_initialize
+      user = user.update(user_params)
+      @user = User.find_by(facebook_id: user_params[:facebook_id])
+    else
+      @user = User.new(user_params)
+      @user.save
+    end
   end
 
   def follow
@@ -37,7 +42,7 @@ class Api::UsersController < ApplicationController
 
   private
   def user_params
-    params.permit(:name, :image_url, :email, :facebook_id, :token)
+    params.permit(:name, :image_url, :email, :facebook_id, :token, :password_confirmation, :password, :avatar)
   end
 
   def follow_params
