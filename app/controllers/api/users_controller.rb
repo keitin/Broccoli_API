@@ -8,7 +8,9 @@ class Api::UsersController < ApplicationController
       @user = User.find_by(facebook_id: user_params[:facebook_id])
     else
       @user = User.new(user_params)
-      @user.save
+      unless @user.save
+        @error_message = @user.errors.full_messages
+      end
     end
   end
 

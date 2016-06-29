@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   root 'top#index'
   namespace :api, default: {format: :json} do
+    resources :sessions, only: [:create]
     resources :users, only: [:create] do
       member do
         resources :notices, only: [:index]
