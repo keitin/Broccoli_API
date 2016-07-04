@@ -1,7 +1,7 @@
 class Api::BlogsController < ApplicationController
 
   skip_before_filter :verify_authenticity_token
-  before_action :set_blog, only: [:show]
+  before_action :set_blog, only: [:show, :destroy]
 
   def index
     if params[:user_id] == "nil"
@@ -27,6 +27,10 @@ class Api::BlogsController < ApplicationController
 
   def search
     @blogs = Blog.where("title like '%#{search_params[:keyword]}%'").page(search_params[:page]).per(20)
+  end
+
+  def destroy
+    @blog.destroy
   end
 
   private

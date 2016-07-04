@@ -55,3 +55,4 @@ gem 'fog'
 gem 'kaminari'
 gem 'resonance'
 gem 'sorcery'
+gem "paranoia", "~> 2.0"

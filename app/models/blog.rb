@@ -4,6 +4,7 @@ class Blog < ActiveRecord::Base
   has_many :materials
   has_many :images, ->{ order("order DESC") }
   mount_uploader :image, ImageUploader
+  acts_as_paranoid #論理削除
 
   def self.save_blog(params)
     title = params[:title]

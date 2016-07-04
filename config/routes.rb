@@ -19,7 +19,7 @@ Rails.application.routes.draw do
         end
       end
     end
-    resources :blogs, only: [:index, :create, :show] do
+    resources :blogs do
       collection do
         get 'following'
         get 'search'
