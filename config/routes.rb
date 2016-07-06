@@ -31,6 +31,7 @@ Rails.application.routes.draw do
       end
     end
     resources :reports, only: [:create]
+    resources :comments, only: [:index, :create]
     resources :images, only: [:create]
     resources :texts, only: [:create]
 
