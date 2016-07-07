@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   mount_uploader :avatar, ImageUploader
 
   has_many :blogs
-  has_many :notices, class_name: 'Like', foreign_key: 'blog_user_id'
+  has_many :notices
   validates :email, uniqueness: true
 
 
