@@ -6,7 +6,11 @@ Rails.application.routes.draw do
     resources :sessions, only: [:create]
     resources :users, only: [:create] do
       member do
-        resources :notices, only: [:index]
+        resources :notices, only: [:index, :update] do
+          collection do
+            get 'count'
+          end
+        end
         post   'follow'
         delete 'unfollow'
         get    'following'

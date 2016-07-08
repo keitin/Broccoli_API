@@ -1,6 +1,6 @@
 class Comment < ActiveRecord::Base
   
-  belongs_to :blog
+  belongs_to :blog, counter_cache: :comments_count
   belongs_to :user
 
   after_create :create_notice
